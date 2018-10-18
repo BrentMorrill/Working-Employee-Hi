@@ -1,6 +1,21 @@
  new-item -name "fileserver" -itemtype Directory -path C:\
 PS C:\fileserver> new-item -path C:\ -Name "fileserver" -ItemType Directory
 set-location -path C:\fileserver
+$name = read-host 'What is your name?'
+$name
+$path = read-host 'What file path are you wanting?'
+$path
+$prompt = read-host 'Are you sure?'
+$prompt
+$number = read-host 'Please input a number'
+$number
+$num = 5,50,50,3,1
+$num | foreach-object {$number * $num}
+
+$job = test-connection -computername (get-content "serverlist.csv") -asjob
+if ($job.jobstateinfo.state -ne "running") {$results = receive-job
+$job}
+
 $employeelistcsv = import-csv -path 'C:\users\black\downloads\employeelist.csv'
 foreach ($employeename in $employeelistcsv)
     {$employeename = $employeelistcsv.name.replace(' ','').ToLower()
